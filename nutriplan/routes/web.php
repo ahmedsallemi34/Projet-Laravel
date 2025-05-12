@@ -30,7 +30,6 @@ Route::get('/', function () {
     Route::resource('users', UserController::class);
 
 Route::get('login', [UserController::class, 'showLoginForm'])->name('login');
-
 // Route pour traiter la connexion
 Route::post('login', [UserController::class, 'login'])->name('users.login');
 //Route::post('login', [UserController::class, 'login'])->name('gestionnaire.dashboard');
@@ -38,3 +37,25 @@ Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 Route::get('/register', [UserController::class, 'create'])->name('register');
 Route::post('/register', [UserController::class, 'store'])->name('register.store');
 
+Route::get('/', fn() => view('home'))->name('home');
+Route::get('/apropos', fn() => view('about'))->name('about');
+Route::get('/historique', fn() => view('history'))->name('history');
+Route::get('/contact', fn() => view('contact'))->name('contact');
+
+Route::get('/contact', function () {
+    return view('contact');
+});
+
+// Route pour gérer la soumission du formulaire de contact
+Route::post('/submit-contact', function (Request $request) {
+    // Ici vous pouvez gérer la logique de traitement du formulaire, comme l'enregistrement dans la base de données ou l'envoi par email
+    $name = $request->input('name');
+    $email = $request->input('email');
+    $message = $request->input('message');
+
+    // Exemple : Affichage des données reçues
+    return "Nom: $name, Email: $email, Message: $message";
+});
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');

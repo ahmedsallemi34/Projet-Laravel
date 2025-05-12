@@ -3,7 +3,9 @@
 @section('title', 'Mes Plans Alimentaires')
 
 @section('content')
+
 <div class="container">
+
 
     {{-- TITRE AMÉLIORÉ --}}
     <h1 class="text-center mb-5" style="font-size: 2.5rem; font-weight: bold; text-transform: uppercase; color: #2c3e50; letter-spacing: 1px;">
@@ -35,7 +37,7 @@
         <div class="row">
             @foreach ($plans as $plan)
                 <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="glass-card" style="padding: 20px; border-radius: 10px; background: rgba(44, 62, 80, 0.8);">
+                    <div class="glass-card" style="padding: 15px; border-radius: 10px; background: rgba(44, 62, 80, 0.8);">
                         {{-- Image depuis lien externe --}}
                         @php
                             $images = [
@@ -46,18 +48,18 @@
                             $imgSrc = $images[$loop->index % count($images)];
                         @endphp
 
-                        <img src="{{ $imgSrc }}" class="img-fluid rounded mb-3" alt="Nutrition Image" style="height: 180px; object-fit: cover;">
+                        <img src="{{ $imgSrc }}" class="img-fluid rounded mb-3" alt="Nutrition Image" style="height: 150px; object-fit: cover;">
 
                         {{-- Titre du plan --}}
-                        <h4 class="text-white" style="font-size: 1.8rem; font-weight: 600;">{{ ucfirst($plan->jour) }} - {{ $plan->repas }}</h4>
+                        <h4 class="text-white" style="font-size: 1.6rem; font-weight: 600;">{{ ucfirst($plan->jour) }} - {{ $plan->repas }}</h4>
 
                         {{-- Contenu du plan --}}
                         @if ($plan->recette)
-                            <p class="text-white" style="font-size: 1.4rem; color: #f39c12; font-weight: bold;">
+                            <p class="text-white" style="font-size: 1.2rem; color: #f39c12; font-weight: bold;">
                                 <strong>{{ $plan->recette->titre }}</strong>
                             </p>
-                            <p class="text-light" style="font-size: 1.2rem; font-style: italic; color: #bdc3c7;">{{ Str::limit($plan->recette->description, 80) }}</p>
-                            <ul class="text-white text-start" style="font-size: 1.1rem; color: #ecf0f1;">
+                            <p class="text-light" style="font-size: 1rem; font-style: italic; color: #bdc3c7;">{{ Str::limit($plan->recette->description, 80) }}</p>
+                            <ul class="text-white text-start" style="font-size: 1rem; color: #ecf0f1;">
                                 @foreach ($plan->recette->ingredients as $ingredient)
                                     <li>🧂 {{ $ingredient->nom }} - {{ $ingredient->calories }} kcal</li>
                                 @endforeach
@@ -72,4 +74,5 @@
         </div>
     @endif
 </div>
+
 @endsection

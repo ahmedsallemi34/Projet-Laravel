@@ -50,15 +50,19 @@
 
 <style>
     body {
-        background-color: #4a5568; /* Gris-bleu foncé */
-        font-family: 'Segoe UI', sans-serif;
-        color: #f7fafc; /* Couleur de texte par défaut pour la page */
-        display: flex;
-        justify-content: center; /* Centre horizontalement */
-        align-items: center; /* Centre verticalement */
-        min-height: 100vh;
-        margin: 0;
-    }
+    background-color: #4a5568;
+    font-family: 'Segoe UI', sans-serif;
+    color: #f7fafc;
+    margin: 0;
+}
+
+main.login-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 80vh; /* ou 100vh si tu veux centrer */
+}
+
 
     .login-wrapper {
         width: 100%;
@@ -75,7 +79,7 @@
         padding: 35px; /* Augmentation du padding intérieur */
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         color: #f7fafc;
-        width: 45%; /* Ajustement de la largeur du box */
+        width: 100%; /* Ajustement de la largeur du box */
     }
 
     .avatar {
